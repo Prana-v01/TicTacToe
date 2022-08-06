@@ -12,7 +12,7 @@ def validate(board,player): #to validate the users input of position on board.
         player = int(input("Please enter a valid position: ")) # asks for new position, as the previous one was incorrect.
     return player-1 #It returns -1 so we recieve the index and is able to place in the correct place.
 
-def win_conditions(player_value,player_name): #this will determnie who wins.
+def win_conditions(player_value): #this will determnie who wins.
     win_conditions = [[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]] # the possible win combinations.
     for wins in win_conditions: #each list in the list of lists.
         occurence_of_combination = 0 #keeps track of how many time the occurence of a correct combination occures.
@@ -45,9 +45,9 @@ while True:
     board[player_two_valid] = "o"
     print_board()
 
-if win_conditions(p1_value,"Player One"):
+if win_conditions(p1_value):
     print("Player one has won!") # display who wins.
 
-if win_conditions(p2_value,"Player Two"):
+if win_conditions(p2_value):
     print("player two has won!")
 
