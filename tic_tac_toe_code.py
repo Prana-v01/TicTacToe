@@ -52,11 +52,16 @@ while True:
     p1_value.append(player_one_valid) #the validated version of the users input will then be appended to p1_value.
     board[player_one_valid] = "x" # places "x" on the board of the desired place by the user.
     print_board() #displays board
+    
+    if win_conditions(p1_value):
+        break
+    if win_conditions(p2_value):
+        break
 
     # checks if game is finished by determining the amount of slots. When no slots are availbile the game will end.
     # this is flawed in a way, this should end when somone wins. Or fill up the slots if its a tie. 
-    if board[0] and board[1] and board[2] and board[3] and board[4] and board[5] and board[6] and board[7] and board[8] != "▢":
-        break
+    if "▢" not in board: 
+        break #when game is completely full.
 
     player_two = int(input("enter a number: "))
     player_two_valid = validate(board, player_two)
@@ -65,8 +70,9 @@ while True:
     print_board()
 
 if win_conditions(p1_value):
-    print("Player one has won!") # display who wins.
-
-if win_conditions(p2_value):
+    print("Player one has won!")
+elif win_conditions(p2_value):
     print("player two has won!")
+else:
+    print("Tie!")
 
