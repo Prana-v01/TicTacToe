@@ -65,6 +65,9 @@ def winner(p1_value,p2_value):
         exit()
 
 # this is the game. (Could also make this a function).
+def board_change_move():
+    pass
+
 while True:
     player_one = int(input("enter a number: "))
     player_one_valid = validate(board, player_one)  # validates the users input, then stores, so we can further use.
