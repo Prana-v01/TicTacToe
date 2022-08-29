@@ -64,26 +64,30 @@ def winner(p1_value,p2_value):
         print("player 2 won!")
         exit()
 
-while True:
-    player_one = int(input("enter a number: "))
-    player_one_valid = validate(board, player_one)  # validates the users input, then stores, so we can further use.
-    p1_value.append(player_one_valid)  # the validated version of the users input will then be appended to p1_value.
-    board[player_one_valid] = "x"  # places "x" on the board of the desired place by the user.
+def player_turn(player_value,board,player_character):
+    """
+    :param player_value: This is the players value aka his position on the board.
+    :param board: the board.
+    :param player_character: the players character they use, e.g -> player 1 has "x" and player 2 has "o" they have there own character. 
+    :return: player value. 
+    """
+    player = int(input("enter a number: "))
+    valid_player = validate(board, player)  # validates the users input, then stores, so we can further use.
+    player_value.append(valid_player)  # the validated version of the users input will then be appended to p1_value.
+    board[valid_player] = player_character  # places "x" on the board of the desired place by the user.
     print_board()  # displays board
+    return player_value
 
-    winner(p1_value,p2_value)
+while True:
+    player_one_value = player_turn(p1_value,board,"x")
+    winner(player_one_value,p2_value)
 
     # checks if game is finished by determining the amount of slots. When no slots are availbile the game will end.
     # this is flawed in a way, this should end when somone wins. Or fill up the slots if its a tie.
     if empty_slot not in board:
         break  # when game is completely full.
 
-    player_two = int(input("enter a number: "))
-    player_two_valid = validate(board, player_two)
-    board[player_two_valid] = "o"
-    p2_value.append(player_two_valid)
-    print_board()
-
-    winner(p1_value, p2_value)
+    player_two_value = player_turn(p2_value, board,"o")
+    winner(p1_value, p2_value) #checks after player 2's turn to see if it has won.
 
 print("Tie") #This occurs when the function winners, doesnt determine any of them to have won.
