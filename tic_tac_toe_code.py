@@ -38,7 +38,7 @@ def win_conditions(player_value):  # this will determnie who wins.
     win_conditions = [[0, 1, 2], [3, 4, 5],
                       [6, 7, 8], [0, 4, 8],
                       [2, 4, 6], [0, 3, 6],
-                      [1, 4, 7],[2, 5, 8]]  # the possible win combinations.
+                      [1, 4, 7], [2, 5, 8]]  # the possible win combinations.
     for wins in win_conditions:  # each list in the list of lists.
         occurence_of_combination = 0  # keeps track of how many time the occurence of a correct combination occures.
         for num in player_value:  # the single element inside the original list of users input
@@ -64,10 +64,6 @@ def winner(p1_value,p2_value):
         print("player 2 won!")
         exit()
 
-# this is the game. (Could also make this a function).
-def board_change_move():
-    pass
-
 while True:
     player_one = int(input("enter a number: "))
     player_one_valid = validate(board, player_one)  # validates the users input, then stores, so we can further use.
@@ -87,5 +83,7 @@ while True:
     board[player_two_valid] = "o"
     p2_value.append(player_two_valid)
     print_board()
+
+    winner(p1_value, p2_value)
 
 print("Tie") #This occurs when the function winners, doesnt determine any of them to have won.
