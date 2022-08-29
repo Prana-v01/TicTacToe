@@ -1,5 +1,5 @@
-board = ['▢', '▢', '▢', '▢', '▢', '▢', '▢', '▢', '▢']  # the format of the board.
 empty_slot = '▢'
+board = [empty_slot] * 9
 
 def print_board():  # board will be displayed
     """
